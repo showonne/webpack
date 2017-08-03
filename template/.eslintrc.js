@@ -16,6 +16,9 @@ module.exports = {
   {{#if_eq lintConfig "airbnb"}}
   extends: 'airbnb-base',
   {{/if_eq}}
+  {{#if_eq lintConfig "kaola"}}
+  extends: 'kaola/esnext',
+  {{/if_eq}}
   // required to lint *.vue files
   plugins: [
     'html'

@@ -11,15 +11,15 @@
 
 <script>
 {{#unless router}}
-import Hello from './components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Hello from './components/Hello'{{#if_includes lintConfig "['kaola', 'airbnb']"}};{{/if_includes}}
 
 {{/unless}}
 export default {
-  name: 'app'{{#router}}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{else}},
-  components: {
-    Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{/router}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{#if_eq lintConfig "kaola"}}  {{/if_eq}}  name: 'app'{{#router}}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{else}},
+  {{#if_eq lintConfig "kaola"}}  {{/if_eq}}components: {
+    {{#if_eq lintConfig "kaola"}}    {{/if_eq}}Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+{{#if_eq lintConfig "kaola"}}  {{/if_eq}}  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{/router}}
+}{{#if_includes lintConfig "['kaola', 'airbnb']"}};{{/if_includes}}
 </script>
 
 <style>

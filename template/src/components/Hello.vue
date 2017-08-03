@@ -22,13 +22,13 @@
 
 <script>
 export default {
-  name: 'hello',
-  data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
-    return {
-      msg: 'Welcome to Your Vue.js App'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{#if_eq lintConfig "kaola"}}  {{/if_eq}}  name: 'hello',
+{{#if_eq lintConfig "kaola"}}  {{/if_eq}}  data{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
+{{#if_eq lintConfig "kaola"}}    {{/if_eq}}    return {
+{{#if_eq lintConfig "kaola"}}      {{/if_eq}}      msg: 'Welcome to Your Vue.js App'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+{{#if_eq lintConfig "kaola"}}    {{/if_eq}}    }{{#if_includes lintConfig "['kaola', 'airbnb']"}};{{/if_includes}}
+{{#if_eq lintConfig "kaola"}}  {{/if_eq}}  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+}{{#if_includes lintConfig "['kaola', 'airbnb']"}};{{/if_includes}}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

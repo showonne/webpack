@@ -6,6 +6,14 @@ module.exports = {
       }
 
       return options.inverse(this);
+    },
+    "if_includes": function(v1, v2, options) {
+      console.log(v1, v2);
+      if(v2.includes(v1)){
+        return options.fn(this);
+      }
+
+      return options.inverse(this);
     }
   },
   "prompts": {
@@ -62,6 +70,11 @@ module.exports = {
           "name": "Airbnb (https://github.com/airbnb/javascript)",
           "value": "airbnb",
           "short": "Airbnb"
+        },
+        {
+          "name": "Kaola (https://github.com/kaola-fed/eslint-config-kaola)",
+          "value": "kaola",
+          "short": "Kaola"
         },
         {
           "name": "none (configure it yourself)",
