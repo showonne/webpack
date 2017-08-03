@@ -8,7 +8,6 @@ module.exports = {
       return options.inverse(this);
     },
     "if_includes": function(v1, v2, options) {
-      console.log(v1, v2);
       if(v2.includes(v1)){
         return options.fn(this);
       }
