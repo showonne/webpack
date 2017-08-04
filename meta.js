@@ -82,6 +82,11 @@ module.exports = {
         }
       ]
     },
+    "port": {
+      "type": "number",
+      "message": "dev server port",
+      "default": 8080
+    },
     "unit": {
       "type": "confirm",
       "message": "Setup unit tests with Karma + Mocha?"
