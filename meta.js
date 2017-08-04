@@ -82,6 +82,11 @@ module.exports = {
         }
       ]
     },
+    "husky": {
+      "when": "lint",
+      "type": "confirm",
+      "message": "Use husky & lintStage for precommit check?"
+    },
     "port": {
       "type": "number",
       "message": "dev server port",
@@ -105,5 +110,5 @@ module.exports = {
     "test/e2e/**/*": "e2e",
     "src/router/**/*": "router"
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}{{#husky}}git init\n  {{/husky}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
 };

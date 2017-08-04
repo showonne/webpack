@@ -11,8 +11,17 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run"{{/unit}}{{#e2e}},
     "e2e": "node test/e2e/runner.js"{{/e2e}}{{#if_or unit e2e}},
     "test": "{{#unit}}npm run unit{{/unit}}{{#unit}}{{#e2e}} && {{/e2e}}{{/unit}}{{#e2e}}npm run e2e{{/e2e}}"{{/if_or}}{{#lint}},
-    "lint": "eslint --ext .js,.vue src{{#unit}} test/unit/specs{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}"{{/lint}}
+    "lint": "eslint --ext .js,.vue src{{#unit}} test/unit/specs{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}"{{/lint}}{{#husky}},
+    "precommit": "lint-staged"{{/husky}}
   },
+  {{#husky}}
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  {{/husky}}
   "dependencies": {
     "vue": "^2.3.3"{{#router}},
     "vue-router": "^2.3.1"{{/router}}
@@ -33,6 +42,10 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     {{#lint}}
+    {{#husky}}
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.1",
+    {{/husky}}
     "eslint": "^3.19.0",
     "eslint-friendly-formatter": "^2.0.7",
     "eslint-loader": "^1.7.1",
