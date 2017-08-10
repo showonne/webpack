@@ -4,7 +4,6 @@ module.exports = {
       if (v1 || v2) {
         return options.fn(this);
       }
-
       return options.inverse(this);
     },
     "if_includes": function(v1, v2, options) {
@@ -44,6 +43,24 @@ module.exports = {
           "name": "Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere",
           "value": "runtime",
           "short": "runtime"
+        }
+      ]
+    },
+    "styleConfig": {
+      "type": "list",
+      "message": "use mcss, less or postcss",
+      "choices": [
+        {
+          "name": "mcss",
+          "value": "mcss"
+        },
+        {
+          "name": "less",
+          "value": "less"
+        },
+        {
+          "name": "postcss",
+          "value": "postcss"
         }
       ]
     },
@@ -102,6 +119,10 @@ module.exports = {
     }
   },
   "filters": {
+    "src/mcss/**/*": "styleConfig === 'mcss'",
+    "src/less/**/*": "styleConfig === 'less'",
+    "src/css/**/*": "styleConfig === 'postcss'",
+    ".postcssrc.js": "styleConfig === 'postcss'",
     ".eslintrc.js": "lint",
     ".eslintignore": "lint",
     "config/test.env.js": "unit || e2e",

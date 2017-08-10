@@ -22,7 +22,7 @@ export default {
 }{{#if_includes lintConfig "['kaola', 'airbnb']"}};{{/if_includes}}
 </script>
 
-<style>
+<style{{#unless_eq styleConfig 'postcss'}} lang="{{styleConfig}}"{{/unless_eq}}>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
