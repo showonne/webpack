@@ -5,13 +5,6 @@ module.exports = {
         return options.fn(this);
       }
       return options.inverse(this);
-    },
-    "if_includes": function(v1, v2, options) {
-      if(v2.includes(v1)){
-        return options.fn(this);
-      }
-
-      return options.inverse(this);
     }
   },
   "prompts": {
@@ -68,46 +61,46 @@ module.exports = {
       "type": "confirm",
       "message": "Install vue-router?"
     },
-    "lint": {
-      "type": "confirm",
-      "message": "Use ESLint to lint your code?"
-    },
-    "lintConfig": {
-      "when": "lint",
-      "type": "list",
-      "message": "Pick an ESLint preset",
-      "choices": [
-        {
-          "name": "Standard (https://github.com/feross/standard)",
-          "value": "standard",
-          "short": "Standard"
-        },
-        {
-          "name": "Airbnb (https://github.com/airbnb/javascript)",
-          "value": "airbnb",
-          "short": "Airbnb"
-        },
-        {
-          "name": "Kaola (https://github.com/kaola-fed/eslint-config-kaola)",
-          "value": "kaola",
-          "short": "Kaola"
-        },
-        {
-          "name": "none (configure it yourself)",
-          "value": "none",
-          "short": "none"
-        }
-      ]
-    },
-    "husky": {
-      "when": "lint",
-      "type": "confirm",
-      "message": "Use husky & lintStage for precommit check?"
-    },
+    // "lint": {
+    //   "type": "confirm",
+    //   "message": "Use ESLint to lint your code?"
+    // },
+    // "lintConfig": {
+    //   "when": "lint",
+    //   "type": "list",
+    //   "message": "Pick an ESLint preset",
+    //   "choices": [
+    //     {
+    //       "name": "Standard (https://github.com/feross/standard)",
+    //       "value": "standard",
+    //       "short": "Standard"
+    //     },
+    //     {
+    //       "name": "Airbnb (https://github.com/airbnb/javascript)",
+    //       "value": "airbnb",
+    //       "short": "Airbnb"
+    //     },
+    //     {
+    //       "name": "Kaola (https://github.com/kaola-fed/eslint-config-kaola)",
+    //       "value": "kaola",
+    //       "short": "Kaola"
+    //     },
+    //     {
+    //       "name": "none (configure it yourself)",
+    //       "value": "none",
+    //       "short": "none"
+    //     }
+    //   ]
+    // },
+    // "husky": {
+    //   "when": "lint",
+    //   "type": "confirm",
+    //   "message": "Use husky & lintStage for precommit check?"
+    // },
     "port": {
       "type": "number",
       "message": "dev server port",
-      "default": 8080
+      "default": 8090
     },
     "unit": {
       "type": "confirm",
@@ -123,13 +116,11 @@ module.exports = {
     "src/less/**/*": "styleConfig === 'less'",
     "src/css/**/*": "styleConfig === 'postcss'",
     ".postcssrc.js": "styleConfig === 'postcss'",
-    ".eslintrc.js": "lint",
-    ".eslintignore": "lint",
     "config/test.env.js": "unit || e2e",
     "test/unit/**/*": "unit",
     "build/webpack.test.conf.js": "unit",
     "test/e2e/**/*": "e2e",
     "src/router/**/*": "router"
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}{{#husky}}git init\n  {{/husky}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}git init\n  npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
 };

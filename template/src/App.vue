@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <p>\{{greet}}</p>
     {{#router}}
     <router-view></router-view>
     {{else}}
@@ -11,15 +12,29 @@
 
 <script>
 {{#unless router}}
-import Hello from './components/Hello'{{#if_includes lintConfig "['kaola', 'airbnb']"}};{{/if_includes}}
-
+import Hello from 'components/Hello';
 {{/unless}}
+import api from 'api';
+
 export default {
-{{#if_eq lintConfig "kaola"}}  {{/if_eq}}  name: 'app'{{#router}}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{else}},
-  {{#if_eq lintConfig "kaola"}}  {{/if_eq}}components: {
-    {{#if_eq lintConfig "kaola"}}    {{/if_eq}}Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-{{#if_eq lintConfig "kaola"}}  {{/if_eq}}  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}{{/router}}
-}{{#if_includes lintConfig "['kaola', 'airbnb']"}};{{/if_includes}}
+    name: 'app',
+    data() {
+        return {
+            greet: ''
+        };
+    },
+    created() {
+        api.greet()
+            .then(({code, data}) => {
+                if(code === 200){
+                    this.greet = data.content;
+                }
+            });
+    }{{#unless router}},
+    components: {
+        Hello
+    }{{/unless}}
+};
 </script>
 
 <style{{#unless_eq styleConfig 'postcss'}} lang="{{styleConfig}}"{{/unless_eq}}>
