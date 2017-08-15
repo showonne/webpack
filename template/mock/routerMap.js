@@ -5,7 +5,7 @@ const initMockRouterReg = function(map) {
     let regMap = new Map()
     for (let pathReg in map) {
         if(map.hasOwnProperty(pathReg)){
-            let keyArr = map[pathReg].split(/\s/)
+            let keyArr = pathReg.split(/\s/)
             let pathInfo = {}, urlReg
             if (keyArr.length > 1) {
                 urlReg = keyArr[1]
